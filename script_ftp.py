@@ -19,3 +19,5 @@ print "La creacion se ha realizado correctamente"
 #Crearemos el directorio del virtualhost para asi poder almacenar el contenido en ese directorio
 os.system("mkdir /srv/"+usuario)
 os.system("chown -R "+usuario+". /srv/"+usuario)
+#Añadimos el contenido al fichero del virtualhost
+fichero
