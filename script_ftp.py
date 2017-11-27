@@ -6,4 +6,4 @@ usuario=str(raw_input("Introduce el nombre de departamento que sera a su vez el 
 clave=str(raw_input("Introduce clave del usuario: "))
 
 os.system("useradd "+usuario+" -p "+clave+"")
-print "El usuario"
+print "La creacion se ha realizado correctamente"
