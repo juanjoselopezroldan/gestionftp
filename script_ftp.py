@@ -2,6 +2,8 @@
 import sys
 import os
 
-usuario=str(raw_input("Introduce el nombre del usuario a crear: "))
+usuario=str(raw_input("Introduce el nombre de departamento que sera a su vez el de usuario: "))
 clave=str(raw_input("Introduce clave del usuario: "))
-dep=str(raw_input("Introduce el nombre del departamento (web): "))
+
+os.system("useradd "+usuario+" -p "+clave+"")
+print "El usuario"
