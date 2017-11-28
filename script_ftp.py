@@ -12,7 +12,7 @@ alfabeto="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 encpass=crypt.crypt(clave,alfabeto)
 
 #Creamos el usuario con su respectiva clave
-os.system("useradd "+usuario+" -p "+encpass)
+os.system("useradd "+usuario+" -p"+encpass)
 
 #Crearemos el directorio del virtualhost para asi poder almacenar el contenido en ese directorio
 os.system("mkdir /srv/"+usuario)
@@ -20,11 +20,11 @@ os.system("chown -R "+usuario+". /srv/"+usuario)
 
 #Creamos el contenido que vamos a añadir en el virtualhost
 virtualhost=["Alias /"+usuario+" /srv/ftp/"+usuario+"\n",
-			"<Directory /srv/"+usuario+"/> \n"
-			"	Options +Indexes +SymLinksIfOwnerMatch \n"
-			"	AllowOverride None\n"
-			"	Require all granted\n"
-			"</Directory>\n"
+			"<Directory /srv/"+usuario+"/> \n",
+			"	Options +Indexes +SymLinksIfOwnerMatch \n",
+			"	AllowOverride None\n",
+			"	Require all granted\n",
+			"</Directory>\n",
 			"</VirtualHost>\n"]
 
 #Eliminamos la ultima linea del virtualhost para añadir el nuevo contenido
