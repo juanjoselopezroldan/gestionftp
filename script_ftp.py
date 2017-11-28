@@ -27,8 +27,14 @@ virtualhost=["Alias /"+usuario+" /srv/ftp/"+usuario+"\n",
 			"	AllowOverride None	\n"
 			"	Require all granted"
 			"</Directory>"
-			"</VirtualHost>"]
+			"</VirtualHost>\n"]
 
+#Eliminamos la ultima linea del virtualhost para añadir el nuevo contenido
+os.system("sed -i '$d' /etc/apache2/sites-available/ftp.conf")
 
+#Abrimos el fichero y con la opcion "a" indicamos que vamos a escribir al final de archivo
+datos=open('/etc/apache2/sites-available/ftp.conf',"a")
+datos.writelines(virtualhost)
+datos.close()
 
 #Añadimos el contenido al fichero del virtualhost
