@@ -9,7 +9,6 @@ clave=str(raw_input("Introduce clave del usuario: "))
 
 #Cifraremos la clave que hemos generado
 alfabeto="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
 encpass=crypt.crypt(clave,alfabeto)
 
 #Creamos el usuario con su respectiva clave
@@ -37,4 +36,6 @@ datos=open('/etc/apache2/sites-available/ftp.conf',"a")
 datos.writelines(virtualhost)
 datos.close()
 
+#Añadimos en el fichero de configuracion del servicio ftp la linea que indicar la ruta del DocumentRoot para que asi el usuario pueda iniciar sesion en su sitio FTP
+ruta=["DefaultRoot			/srv/ftp/"+usuario+"	"+usuario"\n"]
 #Añadimos el contenido al fichero del virtualhost
