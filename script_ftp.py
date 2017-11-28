@@ -9,7 +9,7 @@ clave=str(raw_input("Introduce clave del usuario: "))
 
 #Cifraremos la clave que hemos generado
 alfabeto="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#clave=clave.join([choice(alfabeto) for i in range(8)])
+
 encpass=crypt.crypt(clave,alfabeto)
 
 #Creamos el usuario con su respectiva clave
@@ -21,5 +21,13 @@ os.system("mkdir /srv/"+usuario)
 os.system("chown -R "+usuario+". /srv/"+usuario)
 
 #Creamos el contenido que vamos a añadir en el virtualhost
+virtualhost=["Alias /"+usuario+" /srv/ftp/"+usuario+"\n",
+			"<Directory /srv/"+usuario+"/> \n"
+			"	Options +Indexes +SymLinksIfOwnerMatch \n"
+			"	AllowOverride None	\n"
+			"	Require all granted"
+			"</Directory>"
+			"</VirtualHost>"]
+
 
 #Añadimos el contenido al fichero del virtualhost
