@@ -31,7 +31,7 @@ virtualhost=["Alias /"+usuario+" /srv/ftp/"+usuario+"\n",
 #Eliminamos la ultima linea del virtualhost para añadir el nuevo contenido
 os.system("sed -i '$d' /etc/apache2/sites-available/ftp.conf")
 
-#Abrimos el fichero y con la opcion "a" indicamos que vamos a escribir al final de archivo
+#Abrimos el fichero y con la opcion "a" indicamos que vamos a escribir al final de archivo y añadimos el contenido al fichero del virtualhost
 datos=open('/etc/apache2/sites-available/ftp.conf',"a")
 datos.writelines(virtualhost)
 datos.close()
@@ -42,4 +42,5 @@ ftp=open('/etc/proftpd/proftpd.conf',"a")
 ftp.writelines(ruta)
 ftp.close()
 
-#Añadimos el contenido al fichero del virtualhost
+#Creacion del directorio para que pueda guardar la informacion el usuario de ese espacio ftp y ademas de ello se le asigna los permisos necesarios para que ese usuario pueda escribir en el directorio
+
