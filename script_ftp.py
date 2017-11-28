@@ -37,10 +37,11 @@ datos.writelines(virtualhost)
 datos.close()
 
 #Añadimos en el fichero de configuracion del servicio ftp la linea que indicar la ruta del DocumentRoot para que asi el usuario pueda iniciar sesion en su sitio FTP
-ruta=["DefaultRoot			/srv/ftp/"+usuario+"	"+usuario"\n"]
+ruta=["DefaultRoot			/srv/ftp/"+usuario+" "+usuario"\n"]
 ftp=open('/etc/proftpd/proftpd.conf',"a")
 ftp.writelines(ruta)
 ftp.close()
 
 #Creacion del directorio para que pueda guardar la informacion el usuario de ese espacio ftp y ademas de ello se le asigna los permisos necesarios para que ese usuario pueda escribir en el directorio
-
+os.system("mkdir /srv/ftp/"+usuario)
+os.system("chown "+usuario+". -R /srv/ftp/"+usuario)
