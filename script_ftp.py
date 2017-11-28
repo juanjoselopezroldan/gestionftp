@@ -37,7 +37,7 @@ datos.writelines(virtualhost)
 datos.close()
 
 #Añadimos en el fichero de configuracion del servicio ftp la linea que indicar la ruta del DocumentRoot para que asi el usuario pueda iniciar sesion en su sitio FTP
-ruta=["DefaultRoot			/srv/ftp/"+usuario+" "+usuario"\n"]
+ruta=["DefaultRoot			/srv/ftp/"+usuario+" "+usuario+"\n"]
 ftp=open('/etc/proftpd/proftpd.conf',"a")
 ftp.writelines(ruta)
 ftp.close()
