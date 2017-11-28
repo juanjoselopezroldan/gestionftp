@@ -12,7 +12,7 @@ alfabeto="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 encpass=crypt.crypt(clave,alfabeto)
 
 #Creamos el usuario con su respectiva clave
-os.system("useradd "+usuario+" -p"+encpass)
+os.system("useradd "+usuario+" -d /home/"+usuario+" -m -s /bin/bash -p"+encpass)
 
 #Crearemos el directorio del virtualhost para asi poder almacenar el contenido en ese directorio
 os.system("mkdir /srv/"+usuario)
