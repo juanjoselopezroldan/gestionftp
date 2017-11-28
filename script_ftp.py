@@ -13,7 +13,6 @@ encpass=crypt.crypt(clave,alfabeto)
 
 #Creamos el usuario con su respectiva clave
 os.system("useradd "+usuario+" -p "+encpass)
-print "La creacion se ha realizado correctamente"
 
 #Crearemos el directorio del virtualhost para asi poder almacenar el contenido en ese directorio
 os.system("mkdir /srv/"+usuario)
@@ -49,3 +48,5 @@ os.system("chown "+usuario+":"+usuario+" -R /srv/ftp/"+usuario)
 #Reiniciamos los servicios para aplicar los cambios
 os.system("service apache2 restart")
 os.system("service proftpd restart")
+
+print "La creacion del departamento se ha realizado correctamente"
