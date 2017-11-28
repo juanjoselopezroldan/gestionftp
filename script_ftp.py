@@ -45,3 +45,7 @@ ftp.close()
 #Creacion del directorio para que pueda guardar la informacion el usuario de ese espacio ftp y ademas de ello se le asigna los permisos necesarios para que ese usuario pueda escribir en el directorio
 os.system("mkdir /srv/ftp/"+usuario)
 os.system("chown "+usuario+":"+usuario+" -R /srv/ftp/"+usuario)
+
+#Reiniciamos los servicios para aplicar los cambios
+os.system("service apache2 restart")
+os.system("service proftpd restart")
