@@ -30,4 +30,5 @@ virtualhost=["Alias /"+usuario+" /srv/ftp/"+usuario+"\n",
 			"</VirtualHost>"]
 
 
+
 #Añadimos el contenido al fichero del virtualhost
