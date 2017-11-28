@@ -23,9 +23,9 @@ os.system("chown -R "+usuario+". /srv/"+usuario)
 virtualhost=["Alias /"+usuario+" /srv/ftp/"+usuario+"\n",
 			"<Directory /srv/"+usuario+"/> \n"
 			"	Options +Indexes +SymLinksIfOwnerMatch \n"
-			"	AllowOverride None	\n"
-			"	Require all granted"
-			"</Directory>"
+			"	AllowOverride None\n"
+			"	Require all granted\n"
+			"</Directory>\n"
 			"</VirtualHost>\n"]
 
 #Eliminamos la ultima linea del virtualhost para añadir el nuevo contenido
