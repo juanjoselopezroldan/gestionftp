@@ -49,4 +49,7 @@ os.system("chown "+usuario+":"+usuario+" -R /srv/ftp/"+usuario)
 os.system("service apache2 restart")
 os.system("service proftpd restart")
 
+os.system("clear")
 print "La creacion del departamento se ha realizado correctamente"
+print "Usuario: "+usuario
+print "Clave: "+clave
