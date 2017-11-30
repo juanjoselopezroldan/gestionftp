@@ -30,12 +30,12 @@ virtualhost=["Alias /"+usuario+" /srv/"+usuario+"\n",
 #Eliminamos la ultima linea del virtualhost para añadir el nuevo contenido
 os.system("sed -i '$d' /etc/apache2/sites-available/ftp.conf")
 
-#Abrimos el fichero y con la opcion "a" indicamos que vamos a escribir al final de archivo y añadimos el contenido al fichero del virtualhost
+#Abrimos el fichero y con la opcion "a" indicamos que vamos a escribir al final de archivo y añadimos el$
 datos=open('/etc/apache2/sites-available/ftp.conf',"a")
 datos.writelines(virtualhost)
 datos.close()
 
-#Añadimos en el fichero de configuracion del servicio ftp la linea que indicar la ruta del DocumentRoot para que asi el usuario pueda iniciar sesion en su sitio FTP
+#Añadimos en el fichero de configuracion del servicio ftp la linea que indicar la ruta del DocumentRoot $
 ruta="DefaultRoot                       /srv/"+usuario+" "+usuario+"\n"
 ftp=open('/etc/proftpd/proftpd.conf',"a")
 ftp.writelines(ruta)
