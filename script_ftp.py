@@ -19,13 +19,13 @@ os.system("mkdir /srv/"+usuario)
 os.system("chown -R "+usuario+". /srv/"+usuario)
 
 #Creamos el contenido que vamos a añadir en el virtualhost
-virtualhost=["Alias /"+usuario+" /srv/ftp/"+usuario+"\n",
-			"<Directory /srv/"+usuario+"/> \n",
-			"	Options +Indexes +SymLinksIfOwnerMatch \n",
-			"	AllowOverride None\n",
-			"	Require all granted\n",
-			"</Directory>\n",
-			"</VirtualHost>\n"]
+virtualhost=["Alias /"+usuario+" /srv/"+usuario+"\n",
+                        "<Directory /srv/"+usuario+"/> \n",
+                        "       Options +Indexes +SymLinksIfOwnerMatch \n",
+                        "       AllowOverride None\n",
+                        "       Require all granted\n",
+                        "</Directory>\n",
+                        "</VirtualHost>\n"]
 
 #Eliminamos la ultima linea del virtualhost para añadir el nuevo contenido
 os.system("sed -i '$d' /etc/apache2/sites-available/ftp.conf")
@@ -36,20 +36,13 @@ datos.writelines(virtualhost)
 datos.close()
 
 #Añadimos en el fichero de configuracion del servicio ftp la linea que indicar la ruta del DocumentRoot para que asi el usuario pueda iniciar sesion en su sitio FTP
-ruta="DefaultRoot			/srv/ftp/"+usuario+" "+usuario+"\n"
+ruta="DefaultRoot                       /srv/"+usuario+" "+usuario+"\n"
 ftp=open('/etc/proftpd/proftpd.conf',"a")
 ftp.writelines(ruta)
 ftp.close()
-
-#Creacion del directorio para que pueda guardar la informacion el usuario de ese espacio ftp y ademas de ello se le asigna los permisos necesarios para que ese usuario pueda escribir en el directorio
-os.system("mkdir /srv/ftp/"+usuario)
-os.system("chown "+usuario+":"+usuario+" -R /srv/ftp/"+usuario)
 
 #Reiniciamos los servicios para aplicar los cambios
 os.system("service apache2 restart")
 os.system("service proftpd restart")
 
-os.system("clear")
 print "La creacion del departamento se ha realizado correctamente"
-print "Usuario: "+usuario
-print "Clave: "+clave
